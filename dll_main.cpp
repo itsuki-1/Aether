@@ -4,6 +4,7 @@
 #include "imgui.h"
 #include "imgui_impl_win32.h"
 #include "imgui_impl_dx11.h"
+#include "imgui_internal.h"
 #include <thread>
 
 #include "Menu/Menu.h"
@@ -70,6 +71,8 @@ long __stdcall my_present(IDXGISwapChain* _this, UINT a, UINT b)
 	style.TabRounding = 0.0f;
 	style.ItemInnerSpacing.x = 10.0f;
 	style.TabBorderSize = 5.0f;
+	style.FrameRounding = 10.0f;
+	style.GrabRounding = 10.0f;
 
 	ImFontConfig fontConfig;
 	fontConfig.MergeMode = true;
@@ -91,12 +94,13 @@ long __stdcall my_present(IDXGISwapChain* _this, UINT a, UINT b)
 	colors[ImGuiCol_TitleBgActive] = ImVec4(colR * 0.5f, colG * 0.5f, colB * 0.5f, colA * 0.6f);
 	colors[ImGuiCol_ResizeGrip] = ImColor(0, 0, 0, 0);
 	colors[ImGuiCol_Button] = ImVec4(colR * 0.6f, colG * 0.6f, colB * 0.6f, colA * 0.7f);
-	colors[ImGuiCol_CheckMark] = ImVec4(0.0f, 0.0f, 0.0f, colA * 0.7f);
+	colors[ImGuiCol_CheckMark] = ImVec4(1.0f, 1.0f, 1.0f, 0.5f);
 	colors[ImGuiCol_FrameBg] = ImVec4(colR * 0.6f, colG * 0.6f, colB * 0.6f, colA * 0.7f);
 	colors[ImGuiCol_FrameBgActive] = ImVec4(colR * 0.6f, colG * 0.6f, colB * 0.6f, colA * 0.7f);
 	colors[ImGuiCol_Separator] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
 	colors[ImGuiCol_Border] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
-	colors[ImGuiCol_WindowBg] = ImVec4(45.0f/255.0f, 53.0f/255.0f, 60.0f/255.0f, 0.95f);
+	colors[ImGuiCol_WindowBg] = ImVec4(45.0f / 255.0f, 53.0f / 255.0f, 60.0f / 255.0f, 0.95f);
+
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.Fonts->Clear();
